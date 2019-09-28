@@ -1,0 +1,85 @@
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-custom-icon-selected {
+  background-color: #c0c0c0;
+}
+
+.leaflet-custom-icon {
+  padding: 8px 10px 7px 8px;
+}
+
+.leaflet-custom-icon a {
+  color: #000;
+}
+
+.leaflet-custom-icon:hover {
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+.leaflet-info {
+  font-size: 13px;
+  padding: 6px 13px 6px 12px;
+}
+
+.cursor-grab {
+  cursor: grab !important;
+}
+
+.cursor-help {
+  cursor: help !important;
+}
+
+.popup-container {
+  overflow: auto;
+  max-height: 250px;
+  width: 300px;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  color: #212529;
+}
+
+.table-hover tbody tr:hover {
+  color: #212529;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  color: #000;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}

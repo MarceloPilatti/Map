@@ -1,0 +1,67 @@
+{
+  "map": {
+    "initialLatLong": [
+      -15.793889, -47.882778
+    ],
+    "initialZoom": 4,
+    "maxZoom": 18,
+    "controls": {
+      "layers": {
+        "position": "topright",
+        "collapsed": true,
+        "autoZIndex": false
+      },
+      "fullscreen": {
+        "zoomInTitle": "+ zoom",
+        "zoomOutTitle": "- zoom",
+        "position": "topleft",
+        "title": "Entrar em tela cheia",
+        "titleCancel": "Sair da tela cheia"
+      },
+      "scale": {
+        "position": "bottomleft"
+      }
+    },
+    "baselayers": [
+      {
+        "default": true,
+        "name": "osm",
+        "url": "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "layers": "",
+        "format": "",
+        "version": "",
+        "transparent": true,
+        "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+      },
+      {
+        "name": "sentinel",
+        "url": "https://b.s2maps-tiles.eu/wms?",
+        "layers": "s2cloudless-2018",
+        "format": "image/jpeg",
+        "version": "1.1.1",
+        "crs": "EPSG4326",
+        "transparent": true,
+        "attribution": "Sentinel-2 cloudless - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2017 & 2018)"
+      },
+      {
+        "name": "gebco",
+        "url": "http://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?request=getmap&service=wms",
+        "layers": "gebco_08_grid",
+        "format": "image/jpeg",
+        "version": "1.1.1",
+        "transparent": true,
+        "attribution": "GEBCO Compilation Group (2019) GEBCO 2019 Grid"
+      }
+    ],
+    "overlays": [ 
+      {
+        "name": "CAR x DETER",
+        "url": "http://www.terrama2.dpi.inpe.br/mpmt/geoserver/wms",
+        "layers": "terrama2_26:view26_intersection_geom",
+        "format": "image/png",
+        "transparent": true,
+        "version": "1.1.0"
+      }
+    ]
+  }
+}
