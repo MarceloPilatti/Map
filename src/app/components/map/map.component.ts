@@ -309,22 +309,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setDateFilter(layer) {
-    if (layer.type === LayerType.ANALYSIS || layer.type === LayerType.DYNAMIC) {
-      const currentDateInput = JSON.parse(localStorage.getItem('dateFilter'));
-
-      layer.layerData.time = `${currentDateInput[0]}/${currentDateInput[1]}`;
-    }
-    return layer;
-  }
-
   addLayer(layer, addLayer) {
     let layerToAdd = null;
     if (layer && layer.layerData) {
       if (addLayer) {
         this.selectedLayers.push(layer);
       }
-      layer = this.setDateFilter(layer);
       layerToAdd = this.getLayer(layer.layerData);
       layerToAdd.setZIndex(1000 + this.selectedLayers.length);
       layerToAdd.addTo(this.map);
