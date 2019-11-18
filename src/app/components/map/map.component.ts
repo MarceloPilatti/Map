@@ -708,6 +708,10 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.sidebarTableHeight = '48vh';
       this.tableHeight = '30vh';
       this.tableFullscreen = false;
+    } else if (this.sidebarTableHeight === '28vh') {
+      this.sidebarTableHeight = '48vh';
+      this.tableHeight = '30vh';
+      this.tableFullscreen = false;
     }
   }
 }
