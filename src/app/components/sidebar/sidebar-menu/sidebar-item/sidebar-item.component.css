@@ -1,0 +1,28 @@
+.sidebar-item-body {
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #fff;
+    transition: background-color 500ms ease-in-out;
+}
+
+.sidebar-item-body:hover {
+    background-color: #eee;
+}
+
+.sidebar-item-body:active {
+    background-color: #095f99;
+    color: #fff;
+}
+
+.sidebar-item-body a {
+    margin-left: 5px;
+    color: #5f5f5f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sidebar-separator {
+    background-color: #ccc;
+}

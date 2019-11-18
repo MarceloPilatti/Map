@@ -1,0 +1,20 @@
+<div class="p-align-center"
+    [ngClass]="
+            {
+                'sidebar-separator': sidebarItem.separator,
+                'sidebar-item-body': !sidebarItem.separator
+            }">
+
+    <i *ngIf="!sidebarItem.separator"
+        [class]="sidebarItem.icon"></i>
+
+    <div *ngIf="!sidebarItem.separator"
+        class="sidebar-item-label"
+        (click)="onSidebarItemClicked()">
+
+        <a class="sidebar-item-link">
+            {{ sidebarItem.label }}
+        </a>
+
+    </div>
+</div>

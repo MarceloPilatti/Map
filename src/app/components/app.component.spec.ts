@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'map'`, () => {
+  it(`should have as title 'terrama2-report'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('map');
+    expect(app.title).toEqual('terrama2-report');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('map app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('terrama2-report app is running!');
   });
 });

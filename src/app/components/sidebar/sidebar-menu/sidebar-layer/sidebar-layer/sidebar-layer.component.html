@@ -1,0 +1,44 @@
+<div class="sidebar-layer-content"
+    [ngClass]="{'sidebar-layer-margin': layer.type === 'analysis' && !layer.isPrimary}">
+    <div class="sidebar-layer-label"
+        (click)="onChildClicked()">
+
+        <a> {{ layer.shortLabel }} </a>
+
+    </div>
+
+    <div class="sidebar-layer-switch">
+
+        <p-radioButton *ngIf="layer.isPrimary && displayControls"
+                    [value]="layer.label"
+                    name="primary"
+                    [(ngModel)]="primaryRadio"
+                    binary="true"
+                    checkboxIcon="pi pi-circle-on"
+                    (onClick)="onChildRadioClicked()">
+        </p-radioButton>
+
+        <p-inputSwitch *ngIf="displayControls"
+                    [style]="{'margin-left': '8px'}"
+                    [(ngModel)]="parentSwitchChecked"
+                    (onChange)="onChildSwitchChanged($event)">
+        </p-inputSwitch>
+
+    </div>
+</div>
+
+<div *ngIf="layer.tools && displayControls"
+        class="sidebar-layer-tools"
+        [ngClass]="{
+                    'show': isToolsOpened && isLayerGroupOpened,
+                    'hide': !isToolsOpened || !isLayerGroupOpened
+                    }">
+
+    <i *ngFor="let tool of layer.tools"
+        class="{{tool.icon}}"
+        (click)="onToolClicked(tool.name)"
+        pTooltip="{{tool.title}}"
+        tooltipPosition="top">
+    </i>
+
+</div>

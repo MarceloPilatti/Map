@@ -1,0 +1,12 @@
+  <app-sidebar-header *ngIf="logoPath"
+                      class="sidebar-header"
+                      [sidebarLogo]="logoPath"
+                      [sidebarLogoLink]="logoLink">
+  </app-sidebar-header>
+
+  <app-sidebar-menu class="sidebar-menu"
+                    [sidebarItems]="sidebarItems"
+                    [sidebarLayerGroups]="sidebarLayerGroups">
+  </app-sidebar-menu>
+
+  <app-sidebar-footer class="sidebar-footer"></app-sidebar-footer>

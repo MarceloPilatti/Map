@@ -1,0 +1,35 @@
+.sidebar-layer-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-layer-tools.hide {
+    max-height: 0;
+    visibility: hidden;
+}
+
+.sidebar-layer-tools.show {
+    visibility: visible;
+    max-height: 100%;
+    padding: 15px 10px;
+}
+
+.sidebar-layer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-layer-label {
+    flex-grow: 1;
+}
+
+.sidebar-layer-switch {
+    flex-grow: 0;
+}
+
+.sidebar-layer-margin {
+    margin-left: 15px;
+    font-size: 90%;
+}

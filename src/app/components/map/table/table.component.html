@@ -1,0 +1,157 @@
+<br />
+
+<p-table #attributesTable
+        [(value)]="tableData"
+        [paginator]="true"
+        [rows]="selectedRowsPerPage"
+        [scrollable]="true"
+        [resizableColumns]="true"
+        [scrollHeight]="tableHeight"
+        [responsive]="true"
+        [columns]="selectedColumns"
+        [reorderableColumns]="true"
+        [resizableColumns]="true"
+        [lazy]="true"
+        [totalRecords]="totalRecords"
+        [loading]="loading"
+        [exportFilename]="selectedLayerLabel"
+        [rowTrackBy]="trackByFunction"
+        (onLazyLoad)="lazyLoad($event)"
+        [(selection)]="selectedProperties"
+        dataKey="car">
+
+    <ng-template pTemplate="caption">
+        <div class="p-grid p-nogutter">
+
+            <div class="p-col-12 p-md-6 p-col-nogutter">
+
+                <div class="text-left">
+
+                    <p-multiSelect [options]="columns"
+                                    [(ngModel)]="selectedColumns"
+                                    optionLabel="header"
+                                    selectedItemsLabel="{0} columns selected"
+                                    [style]="{minWidth: '200px'}"
+                                    defaultLabel="Selecione as colunas">
+                    </p-multiSelect>
+
+                    &nbsp;&nbsp;
+
+                    <p-dropdown
+                        [options]="rowsPerPage"
+                        [(ngModel)]="selectedRowsPerPage"
+                        (onChange)="onRowsPerPageChange($event)">
+                    </p-dropdown>
+
+                    &nbsp;&nbsp;
+
+                    <p-dropdown #selectedLayersDropdown
+                        [(options)]="selectedLayers"
+                        [(ngModel)]="selectedLayerValue"
+                        [style]="{minWidth: '300px'}"
+                        placeholder="Layers"
+                        (onChange)="onSelectedLayerChange(selectedLayersDropdown)">
+                    </p-dropdown>
+
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-col-nogutter">
+
+                <div class="text-right">
+
+                    <button
+                        pButton
+                        type="button"
+                        icon="fas fa-file-csv"
+                        iconPos="left"
+                        label="Exportar"
+                        (click)="attributesTable.exportCSV({selectionOnly:selectedProperties?true:false})"
+                        pTooltip="Exportar selecionados como CSV"
+                        tooltipPosition="top">
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 2.5em"></th>
+            <th style="width: 2.5em"></th>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pReorderableColumn pResizableColumn>
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <th pResizableColumn style="width: 8em"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body"
+                let-rowData
+                let-columns="columns"
+                let-index="rowIndex"
+                let-expanded="expanded">
+        <tr [pSelectableRow]="rowData"
+            [pReorderableRow]="index">
+            <td style="width: 2.5em">
+                <a [pRowToggler]="rowData">
+                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </a>
+            </td>
+            <td style="width: 2.5em">
+                <i class="fa fa-bars" pReorderableRowHandle></i>
+            </td>
+            <td *ngFor="let col of columns" class="ui-resizable-column">
+                {{rowData[col.field]}}
+            </td>
+            <td style="width: 8em">
+                <button pButton
+                        icon="fas fa-map-marker-alt"
+                        (click)="onShowMapClicked(rowData)"
+                        pTooltip="Visualizar no mapa">
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+        <tr>
+            <td [attr.colspan]="columns.length + 4">
+                <div class="p-grid">
+                    <div class="p-col-2">
+                        <label>{{rowData.registro_estadual}}</label>
+                    </div>
+                    <div class="p-col-2">
+                        <label>{{rowData.municipio}}</label>
+                    </div>
+                    <div class="p-col-2">
+                        <label>{{rowData.area}}</label>
+                    </div>
+                    <div class="p-col-2">
+                        <label>{{rowData.situacao}}</label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorleft" let-state>
+        &nbsp;&nbsp;<strong>{{ state.totalRecords }} registros</strong>
+    </ng-template>
+
+    <button
+        pButton
+        type="button"
+        icon="fas fa-file-alt"
+        iconPos="left"
+        label="Gerar relatório"
+        (click)="onGenerateReportClick($event)"
+        pTooltip="Gerar relatório"
+        tooltipPosition="top">
+    </button>
+
+</p-table>

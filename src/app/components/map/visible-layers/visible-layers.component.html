@@ -1,0 +1,19 @@
+<p-dialog
+        header="Layers visíveis"
+        [positionLeft]="375"
+        [positionTop]="60"
+        resizable="false"
+        [(visible)]="displayVisibleLayers"
+        [contentStyle]="{'width': '400px','max-height':'40vh'}">
+
+        <div class="visible-layers-item"
+            pDraggable="dd"
+            pDroppable="dd"
+            *ngFor="let selectedLayer of selectedLayers.reverse();trackBy: trackByFunction"
+            (onDragStart)="dragStart($event, selectedLayer)"
+            (onDragEnd)="dragEnd($event)"
+            (onDrop)="drop($event)">
+            {{ selectedLayer.label }}
+        </div>
+
+</p-dialog>

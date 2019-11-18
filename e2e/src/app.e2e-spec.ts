@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('map app is running!');
+    expect(page.getTitleText()).toEqual('terrama2-report app is running!');
   });
 
   afterEach(async () => {
